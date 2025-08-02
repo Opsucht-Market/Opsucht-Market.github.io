@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opsucht.net Market</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="filters">
+            <select id="categoryFilter">
+                <option value="">Alle Kategorien</option>
+            </select>
+            <input type="text" id="searchInput" placeholder="Suche nach Items...">
+            <button id="refreshButton" class="refresh-button" title="Aktualisieren">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                </svg>
+                <span id="refreshTimer"></span>
+            </button>
+        </div>
+        
+        <div id="itemsGrid"></div>
+    </div>
+
+    <div id="itemModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <img id="modalItemIcon" src="" alt="">
+                <div class="modal-item-info">
+                    <h2 id="modalItemName"></h2>
+                    <p id="modalItemCategory"></p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="price-info-container">
+                    <div class="price-info-row">
+                        <div class="price-box buy">
+                            <h3>Kaufpreis</h3>
+                            <p id="modalBuyPrice"></p>
+                            <small id="modalBuyOrders"></small>
+                        </div>
+                        <div class="price-box sell">
+                            <h3>Verkaufspreis</h3>
+                            <p id="modalSellPrice"></p>
+                            <small id="modalSellOrders"></small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="priceHistoryChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

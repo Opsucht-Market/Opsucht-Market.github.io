@@ -1,0 +1,230 @@
+:root {
+    --background-color: #1a1a1a;
+    --text-color: #fff;
+    --border-color: #333;
+    --hover-color: #2d2d2d;
+    --buy-color: #4ade80;
+    --sell-color: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#categoryFilter, #searchInput {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-radius: 4px;
+}
+
+#categoryFilter {
+    min-width: 200px;
+}
+
+#searchInput {
+    flex-grow: 1;
+}
+
+.refresh-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.refresh-button:hover {
+    background-color: var(--hover-color);
+}
+
+.refresh-button svg {
+    transition: transform 0.5s;
+}
+
+.refresh-button.refreshing svg {
+    transform: rotate(360deg);
+}
+
+.refresh-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.refresh-button:disabled:hover {
+    background-color: var(--background-color);
+}
+
+#refreshTimer {
+    min-width: 24px;
+    text-align: center;
+}
+
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.item-card {
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+.item-card:hover {
+    background-color: var(--hover-color);
+}
+
+.item-icon {
+    width: 48px;
+    height: 48px;
+    display: block;
+    margin: 0 auto;
+}
+
+.item-tooltip {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 100;
+}
+
+.item-card:hover .item-tooltip {
+    display: block;
+}
+
+.category-title {
+    margin: 20px 0 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--background-color);
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 800px;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-item-info {
+    flex-grow: 1;
+}
+
+#modalItemIcon {
+    width: 64px;
+    height: 64px;
+}
+
+.price-info-container {
+    margin: 20px 0;
+}
+
+.price-info-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.price-box {
+    flex: 1;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.price-box.buy {
+    border: 1px solid var(--buy-color);
+}
+
+.price-box.sell {
+    border: 1px solid var(--sell-color);
+}
+
+.chart-container {
+    height: 300px;
+    margin: 20px 0;
+}
+
+input[type="number"], input[type="text"], select {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 5px 8px;
+    border-radius: 4px;
+}
+
+.loading, .error {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+}
